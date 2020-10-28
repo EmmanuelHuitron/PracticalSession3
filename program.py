@@ -62,4 +62,4 @@ def main():
 	s01=permuter(s01,s01P)
 	Li=xor(s01,Li)
 	output=Li+Ri
-	print(''.join(permuter(output,finalP)))
+	return(''.join(permuter(output,finalP)))
