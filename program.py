@@ -27,39 +27,38 @@ def permuter(lista, config):
 		aux.append(lista[int(config[x])])
 	return aux
 
-main()
-def main():
-	s0=[[1,0,3,2],[3,2,1,0],[0,2,1,3],[3,1,3,2]] #Sbox
-	s1=[[0,1,2,3],[2,0,1,3],[3,0,1,0],[2,1,0,3]]#Sbox
-	keyIP=[2,4,1,6,3,9,0,8,7,5]#Initial Permutation Key.
-	initialP=[1,5,2,0,3,7,4,6]#Initial Permutation Int.
-	finalP=[3,0,2,4,6,1,7,5]#Final Permutation  Int.
-	s01P=[1,3,2,0]
-	subKConfig=[5,2,6,3,7,4,9,8]
-	entrieXpndr=[3,0,1,2,1,2,3,0]
-	subKey1=[]
-	subKey2=[]
-	choice=input().strip().upper()
-	key=list(input().strip().upper())#almacena la llave.
-	entrie=list(input().strip().upper())#almacena la cadena de entrada.
-	subK()
-	scheduler=[subKey1,subKey2]
-	if choice == 'D':
-		scheduler.reverse()
-	entrie=permuter(entrie,initialP)#permutacion inicial.
-	Li=entrie[:len(entrie)//2]#Li almacena el lado izquierdo.
-	Ri=entrie[len(entrie)//2:]#Ri almacena el lado derecho.
-	auXr=xor(scheduler[0],permuter(Ri,entrieXpndr))
-	s01=list(bin(s0[int(auXr[0]+auXr[3],2)][int(auXr[1]+auXr[2],2)])[2:].zfill(2)+bin(s1[int(auXr[4]+auXr[7],2)][int(auXr[5]+auXr[6],2)])[2:].zfill(2))
-	s01=permuter(s01,s01P)
-	aux=Ri
-	Ri=xor(s01,Li)
-	Li=aux
-	auXr=xor(scheduler[1],permuter(Ri,entrieXpndr))
-	s01=list(
-	bin(s0[int(auXr[0]+auXr[3],2)][int(auXr[1]+auXr[2],2)])[2:].zfill(2)+
-	bin(s1[int(auXr[4]+auXr[7],2)][int(auXr[5]+auXr[6],2)])[2:].zfill(2))
-	s01=permuter(s01,s01P)
-	Li=xor(s01,Li)
-	output=Li+Ri
-	return(''.join(permuter(output,finalP)))
+
+s0=[[1,0,3,2],[3,2,1,0],[0,2,1,3],[3,1,3,2]] #Sbox
+s1=[[0,1,2,3],[2,0,1,3],[3,0,1,0],[2,1,0,3]]#Sbox
+keyIP=[2,4,1,6,3,9,0,8,7,5]#Initial Permutation Key.
+initialP=[1,5,2,0,3,7,4,6]#Initial Permutation Int.
+finalP=[3,0,2,4,6,1,7,5]#Final Permutation  Int.
+s01P=[1,3,2,0]
+subKConfig=[5,2,6,3,7,4,9,8]
+entrieXpndr=[3,0,1,2,1,2,3,0]
+subKey1=[]
+subKey2=[]
+choice=input().strip().upper()
+key=list(input().strip().upper())#almacena la llave.
+entrie=list(input().strip().upper())#almacena la cadena de entrada.
+subK()
+scheduler=[subKey1,subKey2]
+if choice == 'D':
+	scheduler.reverse()
+entrie=permuter(entrie,initialP)#permutacion inicial.
+Li=entrie[:len(entrie)//2]#Li almacena el lado izquierdo.
+Ri=entrie[len(entrie)//2:]#Ri almacena el lado derecho.
+auXr=xor(scheduler[0],permuter(Ri,entrieXpndr))
+s01=list(bin(s0[int(auXr[0]+auXr[3],2)][int(auXr[1]+auXr[2],2)])[2:].zfill(2)+bin(s1[int(auXr[4]+auXr[7],2)][int(auXr[5]+auXr[6],2)])[2:].zfill(2))
+s01=permuter(s01,s01P)
+aux=Ri
+Ri=xor(s01,Li)
+Li=aux
+auXr=xor(scheduler[1],permuter(Ri,entrieXpndr))
+s01=list(
+bin(s0[int(auXr[0]+auXr[3],2)][int(auXr[1]+auXr[2],2)])[2:].zfill(2)+
+bin(s1[int(auXr[4]+auXr[7],2)][int(auXr[5]+auXr[6],2)])[2:].zfill(2))
+s01=permuter(s01,s01P)
+Li=xor(s01,Li)
+output=Li+Ri
+print(''.join(permuter(output,finalP)))
