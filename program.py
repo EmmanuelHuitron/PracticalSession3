@@ -1,3 +1,4 @@
+
 def xor(lista1, lista2):
 	auxXOR=[]
 	for x in range(len(lista1)):#Se realiza el xor bit por bit de los bytes actuales.
