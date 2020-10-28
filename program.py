@@ -1,10 +1,9 @@
-
 def xor(lista1, lista2):
 	auxXOR=[]
 	for x in range(len(lista1)):#Se realiza el xor bit por bit de los bytes actuales.
 		auxXOR.append(str(int(lista1[x])^int(lista2[x])))
 	return auxXOR
-	
+
 def LS(lst):
 	aux=lst[0]
 	for x in range(0,len(lst)-1):
@@ -21,14 +20,14 @@ def subK():
 	key=LS(LS(key[:(len(key))//2]))+key[(len(key))//2:]
 	key=key[:(len(key))//2]+LS(LS(key[(len(key))//2:]))
 	subKey2=permuter(key,subKConfig)
-	
+
 def permuter(lista, config):
 	aux=[]
 	for x in range(0,len(config)):
 		aux.append(lista[int(config[x])])
 	return aux
 
-
+main()
 def main():
 	s0=[[1,0,3,2],[3,2,1,0],[0,2,1,3],[3,1,3,2]] #Sbox
 	s1=[[0,1,2,3],[2,0,1,3],[3,0,1,0],[2,1,0,3]]#Sbox
